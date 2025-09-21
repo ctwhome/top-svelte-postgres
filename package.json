@@ -1,10 +1,10 @@
 {
-  "name": "topsveltekit-postgres",
+  "name": "top-svelte-postgres",
   "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/ctwhome/topsveltekit-postgres.git"
+    "url": "hhttps://github.com/ctwhome/top-svelte-postgres"
   },
   "scripts": {
     "dev": "vite dev",
