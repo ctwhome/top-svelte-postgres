@@ -2,7 +2,10 @@
 	import { page } from '$app/state';
 	import Todo from '$lib/components/todo/Todo.svelte';
 	import LoginButton from '$components/ui/Login/LoginButton.svelte';
+	import DebugOverlay from '$lib/components/ui/DebugOverlay.svelte';
 	import { Hello } from 'ctw-kit';
+
+	let showDebugOverlay = $state(false);
 </script>
 
 {#if page.data.session}
@@ -23,7 +26,21 @@
 				<div class="mt-10">
 					<Hello name="SvelteKit form ctw-kit" />
 				</div>
+
+				<div class="mt-8">
+					<button
+						onclick={() => (showDebugOverlay = !showDebugOverlay)}
+						class="btn btn-outline btn-sm"
+					>
+						{showDebugOverlay ? 'Hide' : 'Show'} Debug Overlay
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
+{/if}
+
+<!-- Debug Overlay - available on all pages -->
+{#if showDebugOverlay}
+	<DebugOverlay title="Sample Application Data" onClose={() => (showDebugOverlay = false)} />
 {/if}
