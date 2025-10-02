@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { siteSettings } from '$lib/siteSettings';
 
-	let { title = siteSettings.title, desc = siteSettings.description, img = siteSettings.image } = $props();
+	let {
+		title = siteSettings.title,
+		desc = siteSettings.description,
+		img = siteSettings.image
+	} = $props();
 </script>
 
 <svelte:head>

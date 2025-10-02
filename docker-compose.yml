@@ -8,16 +8,15 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
       POSTGRES_DB: ${DB_NAME:-topsveltekit}
     ports:
-      - "${DB_PORT:-5432}:5432"
+      - '${DB_PORT:-5432}:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER:-postgres}']
       interval: 10s
       timeout: 5s
       retries: 5
     restart: unless-stopped
-
 
   # It will run every time the database is started.
   migrate:
@@ -35,14 +34,13 @@ services:
       postgres:
         condition: service_healthy
 
-
   frontend:
     image: oven/bun:1
     working_dir: /app
     volumes:
       - ./:/app
     ports:
-      - "5173:5173"
+      - '9000:9000'
     env_file:
       - .env
     environment:
@@ -51,7 +49,6 @@ services:
     command: sh -c "bun install && bun run dev"
     # command: sh -c "bun install && bun run dev"
     restart: unless-stopped
-
 
   # Only run this if you want to seed the database with sample data
   # `docker compose run seed`
@@ -66,7 +63,6 @@ services:
     command: psql -h postgres -U ${DB_USER:-postgres} -d ${DB_NAME:-topsveltekit} -f /seed-database/seed.sql
     volumes:
       - ./seed-database:/seed-database
-
 
 volumes:
   postgres_data:

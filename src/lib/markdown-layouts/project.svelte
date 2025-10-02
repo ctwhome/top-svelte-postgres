@@ -8,6 +8,6 @@
 
 <!-- DEFAULT Layout 🩻🩻🩻🩻🩻🩻 -->
 
-<div class="mx-auto prose sm:prose-lg px-3">
+<div class="prose sm:prose-lg mx-auto px-3">
 	{@render children?.()}
 </div>

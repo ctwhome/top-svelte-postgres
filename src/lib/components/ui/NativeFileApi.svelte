@@ -113,7 +113,10 @@
 	<div>
 		<pre>{JSON.stringify(numberFiles, null, 2)}</pre>
 		{#each Object.values(tree) as item}
-			<div class="hover:bg-gray-500 cursor-pointer" onclick={() => fileClicked((item as any).handle)}>
+			<div
+				class="cursor-pointer hover:bg-gray-500"
+				onclick={() => fileClicked((item as any).handle)}
+			>
 				{(item as any).name}
 			</div>
 			<!--      <div>{item[0]} -  <pre>{JSON.stringify(item[1], null, 2)}</pre>{item[1]}</div>-->

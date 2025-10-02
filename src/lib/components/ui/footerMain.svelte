@@ -75,7 +75,7 @@
 			<!-- Version link -->
 			<a
 				href="/changelog"
-				class="text-xs opacity-50 hover:opacity-70 transition-opacity"
+				class="text-xs opacity-50 transition-opacity hover:opacity-70"
 				title="View changelog"
 			>
 				v{version}

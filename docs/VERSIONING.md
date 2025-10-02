@@ -23,19 +23,19 @@ This project uses **Semantic Versioning** with automated releases via GitHub Act
 
 ### Valid Commit Types
 
-| Type       | Version Bump | Description                                    |
-|------------|-------------|------------------------------------------------|
-| `feat`     | Minor       | New feature for the user                      |
-| `fix`      | Patch       | Bug fix for the user                          |
-| `docs`     | None        | Documentation only changes                     |
-| `style`    | None        | Code style changes (formatting, etc)          |
-| `refactor` | None        | Code change that neither fixes nor adds       |
-| `perf`     | Patch       | Performance improvements                       |
-| `test`     | None        | Adding or updating tests                      |
-| `build`    | None        | Build system or dependency changes            |
-| `ci`       | None        | CI configuration changes                      |
-| `chore`    | None        | Other changes that don't modify src           |
-| `revert`   | Varies      | Reverting a previous commit                   |
+| Type       | Version Bump | Description                             |
+| ---------- | ------------ | --------------------------------------- |
+| `feat`     | Minor        | New feature for the user                |
+| `fix`      | Patch        | Bug fix for the user                    |
+| `docs`     | None         | Documentation only changes              |
+| `style`    | None         | Code style changes (formatting, etc)    |
+| `refactor` | None         | Code change that neither fixes nor adds |
+| `perf`     | Patch        | Performance improvements                |
+| `test`     | None         | Adding or updating tests                |
+| `build`    | None         | Build system or dependency changes      |
+| `ci`       | None         | CI configuration changes                |
+| `chore`    | None         | Other changes that don't modify src     |
+| `revert`   | Varies       | Reverting a previous commit             |
 
 ### Breaking Changes
 
@@ -118,6 +118,7 @@ No additional secrets needed - uses default `GITHUB_TOKEN`
 ### Branch Protection
 
 Recommended settings for `main` branch:
+
 - Require pull request reviews
 - Dismiss stale pull request approvals
 - Require status checks to pass
@@ -126,6 +127,7 @@ Recommended settings for `main` branch:
 ### Workflow Permissions
 
 Ensure Actions have write permissions:
+
 - Settings → Actions → General → Workflow permissions
 - Select "Read and write permissions"
 
@@ -140,6 +142,7 @@ Ensure Actions have write permissions:
 ### Mixed Commits
 
 If you have both conventional and regular commits:
+
 - Regular commits are included in the release but don't affect versioning
 - Only conventional commits (`feat:`, `fix:`, etc.) trigger version bumps
 - All commits appear in the git history
@@ -147,6 +150,7 @@ If you have both conventional and regular commits:
 ### No Release Created
 
 Possible reasons:
+
 - No commits with `feat` or `fix` since last release
 - Only `chore`, `docs`, or `style` commits
 - Release already exists for current version
@@ -154,6 +158,7 @@ Possible reasons:
 ### Permission Denied in CI
 
 Ensure GitHub Actions has write permissions:
+
 - Repository Settings → Actions → General
 - Workflow permissions: Read and write
 

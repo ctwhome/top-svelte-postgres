@@ -82,7 +82,7 @@
 </script>
 
 <form
-	class="rounded-box border border-base-300 p-3"
+	class="rounded-box border-base-300 border p-3"
 	onsubmit={(e) => {
 		e.preventDefault();
 		handleRegister();
@@ -129,7 +129,7 @@
 				minlength="8"
 				disabled={isLoading}
 				aria-invalid={error && !validatePassword(password) ? 'true' : undefined}
-				/>
+			/>
 			<label for="register-password">Password (min. 8 characters)</label>
 		</div>
 

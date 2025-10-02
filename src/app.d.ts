@@ -7,7 +7,7 @@ interface CustomUser extends Omit<User, 'email'> {
 	email: string | null | undefined;
 	name?: string | null;
 	image?: string | null;
-	roles?: Role[];  // Use Role enum instead of string[]
+	roles?: Role[]; // Use Role enum instead of string[]
 }
 
 // Extend the Session type to include our custom user
@@ -26,7 +26,7 @@ declare global {
 	namespace App {
 		interface Locals {
 			getSession(): Promise<CustomSession | null>;
-			roles?: Role[];  // Use Role enum instead of string[]
+			roles?: Role[]; // Use Role enum instead of string[]
 		}
 		interface PageData {
 			session: CustomSession | null;
@@ -38,8 +38,8 @@ declare global {
 
 // Extend the auth module's types
 declare module '@auth/core/types' {
-	interface User extends CustomUser { }
-	interface Session extends CustomSession { }
+	interface User extends CustomUser {}
+	interface Session extends CustomSession {}
 }
 
 export { Credentials, CustomUser, CustomSession };

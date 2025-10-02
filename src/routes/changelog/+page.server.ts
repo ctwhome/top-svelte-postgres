@@ -13,9 +13,10 @@ export const load: PageServerLoad = async () => {
 		const processed = await compile(content, mdsvexConfig as any);
 
 		// Extract just the HTML body content
-		const html = processed?.code
-			.replace(/<script[\s\S]*?<\/script>/gi, '')
-			.replace(/^\s*<[^>]+>|<\/[^>]+>\s*$/g, '') || '';
+		const html =
+			processed?.code
+				.replace(/<script[\s\S]*?<\/script>/gi, '')
+				.replace(/^\s*<[^>]+>|<\/[^>]+>\s*$/g, '') || '';
 
 		return {
 			changelog: content,

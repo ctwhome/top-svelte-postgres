@@ -10,27 +10,44 @@
 	import { browser } from '$app/environment';
 	import { dev } from '$app/environment';
 
-	export let data;
+	interface Props {
+		data: {
+			version: string;
+			dbInfo: {
+				host: string;
+				database: string;
+				user: string;
+			};
+		};
+	}
+
+	let { data }: Props = $props();
 
 	// Initialize Eruda for mobile debugging in development
 	onMount(() => {
 		if (browser && dev) {
 			// Load Eruda only in development mode
-			import('eruda').then((module) => {
-				const eruda = module.default;
+			import('eruda')
+				.then((module) => {
+					const eruda = module.default;
 
-				// Initialize Eruda
-				eruda.init();
+					// Initialize Eruda
+					eruda.init();
 
-				// Optional: Auto-show on mobile devices
-				if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-					eruda.show();
-				}
+					// Optional: Auto-show on mobile devices
+					if (
+						/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+							navigator.userAgent
+						)
+					) {
+						eruda.show();
+					}
 
-				console.log('🔧 Eruda mobile debugger initialized');
-			}).catch((err) => {
-				console.error('Failed to load Eruda:', err);
-			});
+					console.log('🔧 Eruda mobile debugger initialized');
+				})
+				.catch((err) => {
+					console.error('Failed to load Eruda:', err);
+				});
 		}
 	});
 </script>

@@ -8,6 +8,6 @@
 
 <!-- DEFAULT Layout 🩻🩻🩻🩻🩻🩻 -->
 
-<div class="mx-auto prose sm:prose-lg px-3 break-words overflow-auto w-full">
+<div class="prose sm:prose-lg mx-auto w-full overflow-auto px-3 break-words">
 	{@render children?.()}
 </div>

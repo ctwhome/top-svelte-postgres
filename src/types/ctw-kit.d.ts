@@ -1,3 +1,3 @@
 declare module 'ctw-kit' {
-  export const Hello: any;
+	export const Hello: any;
 }

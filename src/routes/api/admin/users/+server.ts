@@ -5,62 +5,62 @@ import type { RequestEvent } from './$types';
 import bcrypt from 'bcryptjs';
 
 export async function POST({ request, locals }: RequestEvent) {
-  const session = await locals.getSession();
-  if (!session?.user?.id) {
-    throw error(401, 'Unauthorized');
-  }
+	const session = await locals.getSession();
+	if (!session?.user?.id) {
+		throw error(401, 'Unauthorized');
+	}
 
-  const userRole = (session.user as any).roles?.[0];
-  if (userRole !== Role.ADMIN) {
-    throw error(403, 'Forbidden');
-  }
+	const userRole = (session.user as any).roles?.[0];
+	if (userRole !== Role.ADMIN) {
+		throw error(403, 'Forbidden');
+	}
 
-  const { email, password, name, role } = await request.json();
-  if (!email || !password || !name) {
-    throw error(400, 'Missing required fields');
-  }
+	const { email, password, name, role } = await request.json();
+	if (!email || !password || !name) {
+		throw error(400, 'Missing required fields');
+	}
 
-  try {
-    // Check if user already exists
-    const [existingUser] = await sql`
+	try {
+		// Check if user already exists
+		const [existingUser] = await sql`
       SELECT * FROM users
       WHERE email = ${email}
     `;
 
-    if (existingUser) {
-      throw error(400, 'User already exists');
-    }
+		if (existingUser) {
+			throw error(400, 'User already exists');
+		}
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+		// Hash the password
+		const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert new user with role
-    const [user] = await sql`
+		// Insert new user with role
+		const [user] = await sql`
       INSERT INTO users (email, password, name, role)
       VALUES (${email}, ${hashedPassword}, ${name}, ${role || Role.USER})
       RETURNING id, email, name, role
     `;
 
-    return json(user);
-  } catch (err) {
-    console.error('User creation error:', err);
-    throw error(500, 'Failed to create user');
-  }
+		return json(user);
+	} catch (err) {
+		console.error('User creation error:', err);
+		throw error(500, 'Failed to create user');
+	}
 }
 
 export async function GET({ locals }: RequestEvent) {
-  const session = await locals.getSession();
-  if (!session?.user?.id) {
-    throw error(401, 'Unauthorized');
-  }
+	const session = await locals.getSession();
+	if (!session?.user?.id) {
+		throw error(401, 'Unauthorized');
+	}
 
-  const userRole = (session.user as any).roles?.[0];
-  if (userRole !== Role.ADMIN) {
-    throw error(403, 'Forbidden');
-  }
+	const userRole = (session.user as any).roles?.[0];
+	if (userRole !== Role.ADMIN) {
+		throw error(403, 'Forbidden');
+	}
 
-  try {
-    const users = await sql`
+	try {
+		const users = await sql`
       SELECT
         id,
         email,
@@ -70,8 +70,8 @@ export async function GET({ locals }: RequestEvent) {
       ORDER BY id
     `;
 
-    return json(users);
-  } catch (err) {
-    throw error(500, 'Failed to fetch users');
-  }
-};
+		return json(users);
+	} catch (err) {
+		throw error(500, 'Failed to fetch users');
+	}
+}

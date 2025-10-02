@@ -1,27 +1,27 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import themes from "./themes.json";
-	import type { Theme, ThemeChangeProps } from "./types";
+	import { onMount } from 'svelte';
+	import themes from './themes.json';
+	import type { Theme, ThemeChangeProps } from './types';
 
-	let className: ThemeChangeProps["class"] = undefined;
+	let className: ThemeChangeProps['class'] = undefined;
 	export { className as class };
 
 	const themes_data: Theme[] = themes;
 
 	function setTheme(themeId: string) {
-		document.documentElement.setAttribute("data-theme", themeId);
-		localStorage.setItem("theme", themeId);
+		document.documentElement.setAttribute('data-theme', themeId);
+		localStorage.setItem('theme', themeId);
 	}
 
 	onMount(() => {
-		const savedTheme = localStorage.getItem("theme");
+		const savedTheme = localStorage.getItem('theme');
 		if (savedTheme) {
 			setTheme(savedTheme);
 		}
 	});
 </script>
 
-<div title="Change Theme" class={"dropdown dropdown-end flex-none" + className}>
+<div title="Change Theme" class={'dropdown dropdown-end flex-none' + className}>
 	<div tabIndex="0" class="btn gap-1 normal-case">
 		<svg
 			width="20"
@@ -63,14 +63,12 @@
 						data-theme={theme.id}
 						class="bg-base-100 text-base-content w-full cursor-pointer font-sans"
 						on:click={() => setTheme(theme.id)}
-						on:keydown={(e) => e.key === "Enter" && setTheme(theme.id)}
+						on:keydown={(e) => e.key === 'Enter' && setTheme(theme.id)}
 						role="button"
 						tabindex="0"
 					>
 						<div class="grid grid-cols-5 grid-rows-3">
-							<div
-								class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3"
-							>
+							<div class="col-span-5 row-span-3 row-start-1 flex gap-1 px-4 py-3">
 								<div class="flex-grow text-sm font-bold">
 									{theme.id}
 								</div>

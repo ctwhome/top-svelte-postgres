@@ -2,21 +2,25 @@
 	import { Role } from '$lib/types';
 	import UserPlus from '~icons/lucide/user-plus';
 
-	export let onUserCreated: () => void;
+	interface Props {
+		onUserCreated: () => void;
+	}
 
-	let modalOpen = false;
+	let { onUserCreated }: Props = $props();
+
+	let modalOpen = $state(false);
 	let availableRoles = [Role.USER, Role.ADMIN];
 
 	// New user form
-	let newUser = {
+	let newUser = $state({
 		email: '',
 		password: '',
 		name: '',
 		role: Role.USER
-	};
-	let createUserLoading = false;
-	let createUserError: string | null = null;
-	let createUserSuccess = false;
+	});
+	let createUserLoading = $state(false);
+	let createUserError = $state<string | null>(null);
+	let createUserSuccess = $state(false);
 
 	async function handleCreateUser() {
 		createUserLoading = true;

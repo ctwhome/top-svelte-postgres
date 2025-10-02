@@ -133,7 +133,15 @@
 </script>
 
 {#if showButton}
-	<button class="btn btn-sm" onclick={() => { updateBrowserInfo(); modal.showModal(); }}>Feedback</button>
+	<button
+		class="btn btn-sm"
+		onclick={() => {
+			updateBrowserInfo();
+			modal.showModal();
+		}}
+	>
+		Feedback
+	</button>
 {/if}
 
 <dialog id="feedback_modal" class="modal">
@@ -141,13 +149,13 @@
 		<h3 class="text-lg font-bold">Feedback</h3>
 		<textarea
 			bind:this={textarea}
-			class="textarea w-full mt-10"
+			class="textarea mt-10 w-full"
 			name="feedback"
 			id="feedback"
 			placeholder="Write your feedback here"
 			rows="6"
 		></textarea>
-		<div class="mt-2 text-xs text-base-content/50">
+		<div class="text-base-content/50 mt-2 text-xs">
 			<div>Page: {browserInfo.currentPath}</div>
 			<div>Browser: {browserInfo.browser} • Platform: {browserInfo.platform}</div>
 		</div>

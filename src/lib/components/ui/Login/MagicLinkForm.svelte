@@ -35,7 +35,7 @@
 </script>
 
 <form
-	class="rounded-box border border-base-300 p-3"
+	class="rounded-box border-base-300 border p-3"
 	onsubmit={(e) => {
 		e.preventDefault();
 		handleMagicLinkSignIn();
@@ -56,7 +56,7 @@
 		</div>
 
 		{#if error}
-			<div class="mt-2 text-error">{error}</div>
+			<div class="text-error mt-2">{error}</div>
 		{/if}
 
 		<button type="submit" class="btn btn-outline btn-secondary mt-3 w-full">

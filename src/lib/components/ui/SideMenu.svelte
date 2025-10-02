@@ -100,7 +100,7 @@
 	></div>
 
 	<nav
-		class="fixed bottom-0 left-0 top-0 z-50 grid w-64 grid-rows-[1fr_auto] overflow-hidden bg-base-100 p-4 shadow-lg sm:hidden"
+		class="bg-base-100 fixed top-0 bottom-0 left-0 z-50 grid w-64 grid-rows-[1fr_auto] overflow-hidden p-4 shadow-lg sm:hidden"
 	>
 		<div class="flex-1 overflow-y-auto pt-16">Content here</div>
 
@@ -111,7 +111,7 @@
 	{#if $isMenuOpen}
 		<button
 			type="button"
-			class="z-45 fixed inset-0 cursor-default bg-transparent sm:hidden"
+			class="fixed inset-0 z-45 cursor-default bg-transparent sm:hidden"
 			onclick={closeMenu}
 			onkeydown={(e) => e.key === 'Escape' && closeMenu()}
 			aria-label="Close menu"

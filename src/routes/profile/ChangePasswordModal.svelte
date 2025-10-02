@@ -4,12 +4,16 @@
 	import CheckCircle from '~icons/lucide/check-circle';
 	import { invalidateAll } from '$app/navigation';
 
-	export let showModal = false;
-	let oldPassword = '';
-	let newPassword = '';
-	let confirmPassword = '';
-	let error = '';
-	let success = '';
+	interface Props {
+		showModal?: boolean;
+	}
+
+	let { showModal = $bindable(false) }: Props = $props();
+	let oldPassword = $state('');
+	let newPassword = $state('');
+	let confirmPassword = $state('');
+	let error = $state('');
+	let success = $state('');
 
 	const handleSubmit = async () => {
 		if (newPassword !== confirmPassword) {
@@ -53,17 +57,24 @@
 		}
 	};
 
-	$: if (showModal) {
-		error = '';
-		success = '';
-	}
+	$effect(() => {
+		if (showModal) {
+			error = '';
+			success = '';
+		}
+	});
 </script>
 
 <dialog class="modal" class:modal-open={showModal}>
 	<div class="modal-box">
 		<h3 class="text-lg font-bold">Change Password</h3>
 		<div class="py-4">
-			<form on:submit|preventDefault={handleSubmit}>
+			<form
+				onsubmit={(e) => {
+					e.preventDefault();
+					handleSubmit();
+				}}
+			>
 				<div class="form-control w-full">
 					<label class="label" for="oldPassword">
 						<span class="label-text">Current Password</span>
@@ -120,13 +131,13 @@
 				{/if}
 
 				<div class="modal-action">
-					<button type="button" class="btn" on:click={() => (showModal = false)}>Cancel</button>
+					<button type="button" class="btn" onclick={() => (showModal = false)}>Cancel</button>
 					<button type="submit" class="btn btn-primary">Update Password</button>
 				</div>
 			</form>
 		</div>
 	</div>
 	<form method="dialog" class="modal-backdrop">
-		<button on:click={() => (showModal = false)}>close</button>
+		<button onclick={() => (showModal = false)}>close</button>
 	</form>
 </dialog>

@@ -1,7 +1,7 @@
 // https://kit.svelte.dev/docs/hooks
 import { sequence } from '@sveltejs/kit/hooks';
 import type { Handle } from '@sveltejs/kit';
-import { handleAuth } from "./auth";
+import { handleAuth } from './auth';
 import { protectRoute } from '$lib/server/gatekeeper';
 
 // Sequence of middleware to run

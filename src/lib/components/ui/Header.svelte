@@ -8,7 +8,7 @@
 
 	import ThemeChange from '$lib/components/ui/ThemeChange/ThemeChange.svelte';
 
-	let activeCategory = '';
+	let activeCategory = $state('');
 </script>
 
 <nav class="bien-nav mb-10">

@@ -10,7 +10,7 @@
 <!-- Profile picture -->
 <a
 	href="/about"
-	class="flex items-center gap-3 rounded-lg border border-base-200 p-2 decoration-transparent hover:decoration-primary"
+	class="border-base-200 hover:decoration-primary flex items-center gap-3 rounded-lg border p-2 decoration-transparent"
 >
 	<img
 		id="cover"

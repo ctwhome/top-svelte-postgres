@@ -18,65 +18,65 @@ The themes need to be enabled in your `tailwind.config.ts` file under the DaisyU
 
 ```typescript
 export default {
-  // ... other tailwind config
-  daisyui: {
-    themes: [
-      {
-        ctw: {
-          primary: '#ffb83d',
-          'primary-focus': '#db8b00',
-          'primary-content': 'black',
-          secondary: '#5e9c91',
-          'secondary-focus': '#3e655f',
-          'secondary-content': '#FFFFFF',
-          accent: '#37cdbe',
-          'accent-focus': '#2aa79b',
-          'accent-content': '#FFFFFF',
-          neutral: '#3d4451',
-          'neutral-focus': '#2a2e37',
-          'neutral-content': '#ffffff',
-          'base-100': '#171717',
-          'base-200': '#333',
-          'base-300': '#555',
-          'base-content': '#E8E8E8',
-          info: '#2094f3',
-          success: '#009485',
-          warning: '#FF9900',
-          error: '#ff5724'
-        }
-      },
-      "dark",
-      "light",
-      "night",
-      "cupcake",
-      "bumblebee",
-      "emerald",
-      "corporate",
-      "synthwave",
-      "retro",
-      "cyberpunk",
-      "valentine",
-      "halloween",
-      "garden",
-      "forest",
-      "aqua",
-      "lofi",
-      "pastel",
-      "fantasy",
-      "wireframe",
-      "black",
-      "luxury",
-      "dracula",
-      "cmyk",
-      "autumn",
-      "business",
-      "acid",
-      "lemonade",
-      "coffee",
-      "winter",
-    ]
-  }
-}
+	// ... other tailwind config
+	daisyui: {
+		themes: [
+			{
+				ctw: {
+					primary: '#ffb83d',
+					'primary-focus': '#db8b00',
+					'primary-content': 'black',
+					secondary: '#5e9c91',
+					'secondary-focus': '#3e655f',
+					'secondary-content': '#FFFFFF',
+					accent: '#37cdbe',
+					'accent-focus': '#2aa79b',
+					'accent-content': '#FFFFFF',
+					neutral: '#3d4451',
+					'neutral-focus': '#2a2e37',
+					'neutral-content': '#ffffff',
+					'base-100': '#171717',
+					'base-200': '#333',
+					'base-300': '#555',
+					'base-content': '#E8E8E8',
+					info: '#2094f3',
+					success: '#009485',
+					warning: '#FF9900',
+					error: '#ff5724'
+				}
+			},
+			'dark',
+			'light',
+			'night',
+			'cupcake',
+			'bumblebee',
+			'emerald',
+			'corporate',
+			'synthwave',
+			'retro',
+			'cyberpunk',
+			'valentine',
+			'halloween',
+			'garden',
+			'forest',
+			'aqua',
+			'lofi',
+			'pastel',
+			'fantasy',
+			'wireframe',
+			'black',
+			'luxury',
+			'dracula',
+			'cmyk',
+			'autumn',
+			'business',
+			'acid',
+			'lemonade',
+			'coffee',
+			'winter'
+		]
+	}
+};
 ```
 
 The `ctw` theme is a custom theme with specific color configurations, while the other themes are pre-defined DaisyUI themes.
@@ -85,7 +85,7 @@ The `ctw` theme is a custom theme with specific color configurations, while the 
 
 ```svelte
 <script>
-  import { ThemeChange } from 'ctw-kit';
+	import { ThemeChange } from 'ctw-kit';
 </script>
 
 <ThemeChange />
@@ -93,9 +93,9 @@ The `ctw` theme is a custom theme with specific color configurations, while the 
 
 ## Props
 
-| Prop    | Type     | Default     | Description                           |
-|---------|----------|-------------|---------------------------------------|
-| class   | string   | undefined   | Additional CSS classes for the button |
+| Prop  | Type   | Default   | Description                           |
+| ----- | ------ | --------- | ------------------------------------- |
+| class | string | undefined | Additional CSS classes for the button |
 
 ## Features
 
@@ -109,44 +109,44 @@ The `ctw` theme is a custom theme with specific color configurations, while the 
 
 The component includes 30 pre-configured themes:
 
-| Theme ID    | Display Name    | Description                    |
-|-------------|----------------|--------------------------------|
-| ctw         | Ctw           | Default CTW theme              |
-| dark        | 🌚 dark        | Dark mode theme               |
-| light       | 🌝 light       | Light mode theme              |
-| cupcake     | 🧁 cupcake     | Light, sweet theme            |
-| bumblebee   | 🐝 bumblebee   | Yellow and black theme        |
-| emerald     | ✳️ Emerald     | Green theme                   |
-| corporate   | 🏢 Corporate   | Professional business theme   |
-| synthwave   | 🌃 synthwave   | Retro-futuristic theme       |
-| retro       | 👴 retro       | Vintage style theme          |
-| cyberpunk   | 🤖 cyberpunk   | High-tech theme              |
-| valentine   | 🌸 valentine   | Pink love theme              |
-| halloween   | 🎃 halloween   | Spooky theme                 |
-| garden      | 🌷 garden      | Natural, floral theme        |
-| forest      | 🌲 forest      | Dark green nature theme      |
-| aqua        | 🐟 aqua        | Water-inspired theme         |
-| lofi        | 👓 lofi        | Minimal, calm theme          |
-| pastel      | 🖍 pastel      | Soft color theme             |
-| fantasy     | 🧚‍♀️ fantasy    | Magical theme                |
-| wireframe   | 📝 Wireframe   | Minimal black and white      |
-| black       | 🏴 black       | Pure black theme             |
-| luxury      | 💎 luxury      | Elegant dark theme           |
-| dracula     | 🧛‍♂️ dracula    | Dark vampire theme           |
-| cmyk        | 🖨 CMYK        | Print-inspired theme         |
-| autumn      | 🍁 Autumn      | Fall colors theme            |
-| business    | 💼 Business    | Professional theme           |
-| acid        | 💊 Acid        | Bright, psychedelic theme    |
-| lemonade    | 🍋 Lemonade    | Fresh yellow theme           |
-| night       | 🌙 Night       | Dark mode alternative        |
-| coffee      | ☕️ Coffee      | Brown, warm theme            |
-| winter      | ❄️ Winter      | Cold, blue theme             |
+| Theme ID  | Display Name | Description                 |
+| --------- | ------------ | --------------------------- |
+| ctw       | Ctw          | Default CTW theme           |
+| dark      | 🌚 dark      | Dark mode theme             |
+| light     | 🌝 light     | Light mode theme            |
+| cupcake   | 🧁 cupcake   | Light, sweet theme          |
+| bumblebee | 🐝 bumblebee | Yellow and black theme      |
+| emerald   | ✳️ Emerald   | Green theme                 |
+| corporate | 🏢 Corporate | Professional business theme |
+| synthwave | 🌃 synthwave | Retro-futuristic theme      |
+| retro     | 👴 retro     | Vintage style theme         |
+| cyberpunk | 🤖 cyberpunk | High-tech theme             |
+| valentine | 🌸 valentine | Pink love theme             |
+| halloween | 🎃 halloween | Spooky theme                |
+| garden    | 🌷 garden    | Natural, floral theme       |
+| forest    | 🌲 forest    | Dark green nature theme     |
+| aqua      | 🐟 aqua      | Water-inspired theme        |
+| lofi      | 👓 lofi      | Minimal, calm theme         |
+| pastel    | 🖍 pastel    | Soft color theme            |
+| fantasy   | 🧚‍♀️ fantasy   | Magical theme               |
+| wireframe | 📝 Wireframe | Minimal black and white     |
+| black     | 🏴 black     | Pure black theme            |
+| luxury    | 💎 luxury    | Elegant dark theme          |
+| dracula   | 🧛‍♂️ dracula   | Dark vampire theme          |
+| cmyk      | 🖨 CMYK      | Print-inspired theme        |
+| autumn    | 🍁 Autumn    | Fall colors theme           |
+| business  | 💼 Business  | Professional theme          |
+| acid      | 💊 Acid      | Bright, psychedelic theme   |
+| lemonade  | 🍋 Lemonade  | Fresh yellow theme          |
+| night     | 🌙 Night     | Dark mode alternative       |
+| coffee    | ☕️ Coffee    | Brown, warm theme           |
+| winter    | ❄️ Winter    | Cold, blue theme            |
 
 ## Implementation Example
 
 ```svelte
 <script>
-  import { ThemeChange } from 'ctw-kit';
+	import { ThemeChange } from 'ctw-kit';
 </script>
 
 <!-- Basic usage -->

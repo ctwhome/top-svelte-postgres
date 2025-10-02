@@ -1,55 +1,49 @@
-import { visit } from 'unist-util-visit'
+import { visit } from 'unist-util-visit';
 
-import autolinkHeadings from 'rehype-autolink-headings'
-import slugPlugin from 'rehype-slug'
+import autolinkHeadings from 'rehype-autolink-headings';
+import slugPlugin from 'rehype-slug';
 
-import relativeImages from 'mdsvex-relative-images'
+import relativeImages from 'mdsvex-relative-images';
 // import remarkHeadings from '@vcarl/remark-headings'
 import remarkExternalLinks from 'remark-external-links';
 import readingTime from 'remark-reading-time';
 
 // import remarkToc from 'remark-toc'
 
-
 export default {
-  extensions: ['.svx', '.md'],
-  smartypants: {
-    dashes: /** @type {'oldschool'} */ ('oldschool')
-  },
-  layout: {
-    _: "./src/lib/markdown-layouts/default.svelte", // Default layout for markdown files
-    blog: "./src/lib/markdown-layouts/blog.svelte",
-    project: "./src/lib/markdown-layouts/project.svelte",
-  },
-  remarkPlugins: [
-    videos,
-    relativeImages,
-    // remarkToc,
-    // headings,
-    // adds a `readingTime` frontmatter attribute
+	extensions: ['.svx', '.md'],
+	smartypants: {
+		dashes: /** @type {'oldschool'} */ ('oldschool')
+	},
+	layout: {
+		_: '$lib/markdown-layouts/default.svelte', // Default layout for markdown files
+		blog: '$lib/markdown-layouts/blog.svelte',
+		project: '$lib/markdown-layouts/project.svelte'
+	},
+	remarkPlugins: [
+		videos,
+		relativeImages,
+		// remarkToc,
+		// headings,
+		// adds a `readingTime` frontmatter attribute
 		readingTime,
-    // external links open in a new tab
-		[remarkExternalLinks, { target: '_blank', rel: 'noopener' }],
-  ],
-  rehypePlugins: [
-    slugPlugin,
-    [
-      autolinkHeadings, { behavior: 'wrap' }
-    ]
-  ]
-}
+		// external links open in a new tab
+		[remarkExternalLinks, { target: '_blank', rel: 'noopener' }]
+	],
+	rehypePlugins: [slugPlugin, [autolinkHeadings, { behavior: 'wrap' }]]
+};
 
 /**
  * Adds support to video files in markdown image links
  * @returns {Function} Remark transformer
  */
 function videos() {
-  const extensions = ['mp4', 'webm']
-  return function transformer(/** @type {any} */ tree) {
-    visit(tree, 'image', (node) => {
-      if (extensions.some((ext) => node.url.endsWith(ext))) {
-        node.type = 'html'
-        node.value = `
+	const extensions = ['mp4', 'webm'];
+	return function transformer(/** @type {any} */ tree) {
+		visit(tree, 'image', (node) => {
+			if (extensions.some((ext) => node.url.endsWith(ext))) {
+				node.type = 'html';
+				node.value = `
             <video
               src="${node.url}"
               autoplay
@@ -58,10 +52,10 @@ function videos() {
               loop
               title="${node.alt}"
             />
-          `
-      }
-    })
-  }
+          `;
+			}
+		});
+	};
 }
 
 /**

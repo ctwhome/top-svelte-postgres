@@ -1,37 +1,32 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import {
-		todoStore,
-		addTodo,
-		toggleTodo,
-		deleteTodo,
-		getTodos
-	} from '$components/todo/todoStore.svelte';
+	import { getTodoStore } from '$components/todo/todoStore.svelte';
 	import AddIcon from '~icons/material-symbols/add';
 	import ErrorIcon from '~icons/material-symbols/error';
 	import DeleteIcon from '~icons/material-symbols/delete';
 	import { page } from '$app/stores';
 
-	let newTodoTitle = '';
+	const todoStore = getTodoStore();
+	let newTodoTitle = $state('');
 
 	onMount(() => {
 		if ($page.data.session && (!todoStore.todos.length || todoStore.error)) {
-			getTodos();
+			todoStore.fetchTodos();
 		}
 	});
 
 	async function handleSubmit() {
 		if (!newTodoTitle.trim()) return;
-		await addTodo(newTodoTitle.trim());
+		await todoStore.addTodo(newTodoTitle.trim());
 		newTodoTitle = '';
 	}
 
 	async function handleToggle(id: string, completed: boolean) {
-		await toggleTodo(id, !completed);
+		await todoStore.toggleTodo(id, !completed);
 	}
 
 	async function handleDelete(id: string) {
-		await deleteTodo(id);
+		await todoStore.deleteTodo(id);
 	}
 </script>
 

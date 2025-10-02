@@ -99,22 +99,22 @@ a[target='_blank'] {
 
 /* Floating label form styles */
 .form-control-float {
-  @apply relative;
+	@apply relative;
 }
 
 .form-control-float input {
-  @apply h-12 pt-4 px-3 pb-1 w-full border border-base-300 rounded-lg bg-transparent;
+	@apply border-base-300 h-12 w-full rounded-lg border bg-transparent px-3 pt-4 pb-1;
 }
 
 .form-control-float label {
-  @apply absolute left-3 top-1/2 -translate-y-1/2 text-base-content/70 pointer-events-none transition-all duration-200 text-sm;
+	@apply text-base-content/70 pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-sm transition-all duration-200;
 }
 
 .form-control-float input:focus-within ~ label,
 .form-control-float input:not(:placeholder-shown) ~ label {
-  @apply transform -translate-y-3/4 text-xs text-primary;
+	@apply text-primary -translate-y-3/4 transform text-xs;
 }
 
 .form-control-float input:focus-within {
-  @apply border-primary outline-none;
+	@apply border-primary outline-none;
 }

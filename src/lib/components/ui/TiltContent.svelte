@@ -4,7 +4,6 @@
 	let tiltImage: HTMLElement | HTMLElement[] | undefined = $state();
 
 	let { class: className = undefined, children } = $props();
-	
 
 	onMount(async () => {
 		const tiltOtions = {

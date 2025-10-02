@@ -1,11 +1,13 @@
 # Database Documentation
 
 ## Overview
+
 This project uses PostgreSQL as its primary database, with node-pg-migrate for database migrations. The database structure supports authentication, user management, and application-specific data.
 
 ## Migration System
 
 ### Migration Format
+
 - Uses a simplified three-digit numbering format (001, 002, etc.)
 - SQL-based migrations for maximum flexibility
 - Located in the `migrations/` directory
@@ -34,6 +36,7 @@ See `migrations/000_template.sql` for migration file template and best practices
 ## Connection Management
 
 The database connection is managed through:
+
 - Development: `.env` file
 - Production: Environment variables
 - Connection pooling for optimal performance
@@ -58,6 +61,7 @@ The database connection is managed through:
 ## Example Queries
 
 ### User Management
+
 ```sql
 -- Get user with roles
 SELECT u.*, array_agg(r.name) as roles
@@ -72,6 +76,7 @@ VALUES ($1, $2);
 ```
 
 ### Data Operations
+
 ```sql
 -- Example todo operations
 SELECT * FROM todos WHERE user_id = $1;

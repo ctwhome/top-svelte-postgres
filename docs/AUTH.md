@@ -26,33 +26,39 @@ The authentication system in this SvelteKit application uses [@auth/sveltekit](h
 ## Authentication Providers
 
 ### 1. Email Authentication (Resend)
+
 ```typescript
 Resend({
-  from: "top-sveltekit@ctwhome.com",
-  name: "Top-Sveltekit",
-})
+	from: 'top-sveltekit@ctwhome.com',
+	name: 'Top-Sveltekit'
+});
 ```
+
 - Sends magic links for passwordless authentication
 - User clicks the link to authenticate
 - Secure and user-friendly
 
 ### 2. Google OAuth
+
 ```typescript
-Google
+Google;
 ```
+
 - Allows sign in with Google accounts
 - Handles OAuth 2.0 flow automatically
 - Returns user profile information
 
 ### 3. Credentials (Username/Password)
+
 ```typescript
 Credentials({
-  async authorize(credentials) {
-    // Verify email and password
-    // Return user if valid
-  }
-})
+	async authorize(credentials) {
+		// Verify email and password
+		// Return user if valid
+	}
+});
 ```
+
 - Traditional email/password authentication
 - Passwords are hashed using bcrypt
 - Validates against PostgreSQL database
@@ -62,6 +68,7 @@ Credentials({
 The system uses PostgreSQL for user data storage with a simplified schema:
 
 1. **User Table Structure**:
+
 ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -75,6 +82,7 @@ CREATE TABLE users (
 ```
 
 2. **Role Management**:
+
 - Each user has a single role (admin or user)
 - Role is stored directly in the users table
 - Automatic role assignment through database triggers
@@ -82,18 +90,21 @@ CREATE TABLE users (
 ## Role-Based Access Control (RBAC)
 
 1. **Type-Safe Role System**:
+
 ```typescript
 // In lib/types.ts
 export enum Role {
-  USER = 'user',
-  ADMIN = 'admin'
+	USER = 'user',
+	ADMIN = 'admin'
 }
 ```
+
 - Type-safe role definitions
 - Shared between client and server
 - Prevents typos and invalid role values
 
 2. **Role Assignment**:
+
 ```sql
 -- Automatic admin role assignment
 CREATE OR REPLACE FUNCTION assign_admin_role()
@@ -108,19 +119,21 @@ $$ LANGUAGE plpgsql;
 ```
 
 3. **Route Protection**:
+
 ```typescript
 // In hooks.server.ts
 export const handle = sequence(handleAuth, protectRoute());
 
 // Protect admin routes
 if (event.url.pathname.startsWith('/admin')) {
-  return protectRoute(Role.ADMIN)({ event, resolve });
+	return protectRoute(Role.ADMIN)({ event, resolve });
 }
 ```
 
 ## JWT and Session Handling
 
 1. **JWT Strategy with Role**:
+
 ```typescript
 callbacks: {
   async jwt({ token, user }) {
@@ -133,11 +146,13 @@ callbacks: {
   }
 }
 ```
+
 - Stores role in JWT token
 - Avoids database queries for role checks
 - Efficient session management
 
 2. **Session Enhancement**:
+
 ```typescript
 async session({ session, token }) {
   return {
@@ -154,16 +169,18 @@ async session({ session, token }) {
 ## Client-Side Role Usage
 
 1. **Type-Safe Role Checks**:
+
 ```typescript
 // In components
 import { Role } from '$lib/types';
 
 if (userRole === Role.ADMIN) {
-  // Show admin features
+	// Show admin features
 }
 ```
 
 2. **Role Selection**:
+
 ```typescript
 let availableRoles = [Role.USER, Role.ADMIN];
 
@@ -177,11 +194,13 @@ let availableRoles = [Role.USER, Role.ADMIN];
 ## Security Considerations
 
 1. **Role Security**:
+
 - Roles stored in database and JWT
 - Server-side validation for all role changes
 - Type-safe role handling prevents errors
 
 2. **JWT Security**:
+
 - Roles included in signed tokens
 - Cannot be tampered with
 - Validated on server
@@ -189,6 +208,7 @@ let availableRoles = [Role.USER, Role.ADMIN];
 ## Environment Setup
 
 Required environment variables:
+
 ```env
 AUTH_SECRET=your-secret-key
 GOOGLE_ID=your-google-client-id
@@ -200,6 +220,7 @@ DATABASE_URL=your-postgres-connection-string
 ## Conclusion
 
 This authentication system provides a secure and efficient solution with:
+
 - Simplified role management (single role per user)
 - Type-safe role handling
 - Efficient JWT-based session management

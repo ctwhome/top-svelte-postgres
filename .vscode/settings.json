@@ -8,11 +8,8 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	},
-	"eslint.validate": [
-		"javascript"
-	],
+	"eslint.validate": ["javascript"],
 	"[sql]": {
-    "editor.formatOnSave": false
-  },
+		"editor.formatOnSave": false
+	}
 }
-s

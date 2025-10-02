@@ -1,6 +1,5 @@
 export default [
-
-	{ title: 'About', path: '/about', displayTitle: 'About' },
+	{ title: 'About', path: '/about', displayTitle: 'About' }
 
 	// {
 	// 	title: 'Latest Work',

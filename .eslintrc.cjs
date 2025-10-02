@@ -26,5 +26,11 @@ module.exports = {
 				parser: '@typescript-eslint/parser'
 			}
 		}
-	]
+	],
+	rules: {
+		// Svelte 5 enforcement
+		'svelte/valid-compile': ['error', { ignoreWarnings: false }],
+		// Warn on legacy reactive declarations
+		'no-labels': ['warn', { allowLoop: false, allowSwitch: false }]
+	}
 };

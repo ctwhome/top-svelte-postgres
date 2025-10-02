@@ -14,5 +14,5 @@ categories:
   - Project
 layout: blog | project
 ---
-### Copy this template
 
+### Copy this template

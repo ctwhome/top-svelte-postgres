@@ -62,12 +62,12 @@
 </script>
 
 <div>
-	<div class="text-sm mb-4">
+	<div class="mb-4 text-sm">
 		Input search with auto complete, defer and keyboard navigatio (WIP).
 	</div>
 	<div class="relative">
 		<input
-			class="input border-2 border-gray-300 rounded-md w-full"
+			class="input w-full rounded-md border-2 border-gray-300"
 			type="text"
 			bind:value={searchValue}
 			oninput={handleInput}
@@ -81,7 +81,7 @@
 			<ul class="bg-base-200 max-h-60 overflow-auto">
 				{#each filteredOptions as option, i}
 					<li
-						class="p-3 hover:bg-secondary hover:text-secondary-content"
+						class="hover:bg-secondary hover:text-secondary-content p-3"
 						class:bg-secondary={i === selectedIndex}
 						class:text-secondary-content={i === selectedIndex}
 					>
