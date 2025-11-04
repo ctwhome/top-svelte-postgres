@@ -1,3 +1,8 @@
+> ⚠️ **This repository has been moved to [top-frameworks monorepo](https://github.com/ctwhome/top-frameworks/tree/main/top-svelte-postgres)**
+> 
+> This repository is now archived. All development continues in the monorepo.
+> Please update your bookmarks and references.
+
 # Top-SvelteKit Template
 
 A unified full-stack template with SvelteKit (Svelte 5), TailwindCSS, DaisyUI, AuthJS, Postgres, and more.\
